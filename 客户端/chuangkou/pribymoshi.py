@@ -241,23 +241,30 @@ class Pribymoshi:
 
     #主界面搭建
     def main(self):
-        self.root = Toplevel()
-        self.root.geometry('1004x1024')
+        self.root = Toplevel(bg='#ccc'
+                             )
+        self.root.geometry('720x738')
         self.root.title('与 '+self.othername+' 的私聊！')
         self.im = PhotoImage(file='image/userinfo.png')
         self.chushi = PhotoImage(file='image/weather/chushihua.png')
-        beijing = PhotoImage(file='image/siliao.png')
-        Label(self.root, image=beijing).place(x=0, y=0)
-        #发送文件按钮
-        img1 = PhotoImage(file='image/fasongwenjain.png')
-        Button(self.root,
-               width=130,
-               height=80,
-               image=img1,
+
+
+        l1 = Label(self.root,width=150,height=3,bg='#313131')
+        l1.place(x=0,y=0)
+        l2 = Label(self.root,font=('Adobe 黑体 Std', '18'),
+                   text='聊天信息',bg='#ccc')
+        l2.place(x=10,y=60)
+
+        b1 =Button(self.root,
+               text='发送文件',
+               font=('Adobe 黑体 Std', '14'),
+                fg='white',
+               bg='#313131',
                bd=0,
                relief=FLAT,
                cursor='hand2',
-               command=self.sendtofileThread).place(x=5, y=5)
+               command=self.sendtofileThread)
+        b1.place(x=20, y=10)
         #菜单相关函数
         # menubar = Menu(self.root)
         # menubar.add_command(label='发送文件', command=self.sendtofileThread)
@@ -265,10 +272,10 @@ class Pribymoshi:
         # self.root['menu'] = menubar
 
         #title待定模式暂定为谁和谁的私聊模式
-        showinfos = LabelFrame(self.root,text='聊天信息')
-        showinfos.place(x=5,y=5)
-        huakuai1 = Scrollbar(showinfos)
-        self.showinfo = Text(showinfos,width=37,relief=FLAT,height=18,yscrollcommand = huakuai1.set)
+        showinfos = Frame(self.root,bg='#ccc')
+        showinfos.place(x=0,y=90)
+        huakuai1 = Scrollbar(showinfos,relief=FLAT,width=5)
+        self.showinfo = Text(showinfos,width=54,relief=FLAT,height=23,yscrollcommand = huakuai1.set)
         huakuai1.config(command=self.showinfo.yview)
         huakuai1.pack(side=RIGHT,fill=Y)
         self.showinfo.pack(side=LEFT,fill =BOTH)
@@ -276,10 +283,13 @@ class Pribymoshi:
         self.showinfo.config(state=DISABLED)
 
         #机器人消息
-        aiinfos = LabelFrame(self.root,text='机器人信息')
-        aiinfos.place(x=5,y=265)
-        hukuai2 = Scrollbar(aiinfos)
-        self.aiinfo = Text(aiinfos,width=37,height=10,relief=FLAT,yscrollcommand=hukuai2.set)
+        l3 = Label(self.root, font=('Adobe 黑体 Std', '20'), text='机器人信息',
+                    bg='#ccc')
+        l3.place(x=10, y=400)
+        aiinfos = Frame(self.root,bg='#ccc')
+        aiinfos.place(x=0,y=430)
+        hukuai2 = Scrollbar(aiinfos,relief=FLAT,width=5)
+        self.aiinfo = Text(aiinfos,width=54,height=11,relief=FLAT,yscrollcommand=hukuai2.set)
         hukuai2.config(command =self.aiinfo.yview)
         hukuai2.pack(side=RIGHT,fill=Y)
         self.aiinfo.pack(side=LEFT,fill=BOTH)
@@ -287,34 +297,58 @@ class Pribymoshi:
         self.aiinfo.config(state=DISABLED)
 
         #输入框
-        inputinfos = LabelFrame(self.root,text='输入信息')
-        inputinfos.place(x=5,y=420)
-        self.inputinfo = Text(inputinfos,relief=FLAT,width=40,height=4)
+
+        l3 = Label(self.root, font=('Adobe 黑体 Std', '20'), text='输入信息',
+                   bg='#ccc')
+        l3.place(x=10, y=580)
+        inputinfos = Frame(self.root,bg='#ccc')
+        inputinfos.place(x=0,y=615)
+        self.inputinfo = Text(inputinfos,relief=FLAT,width=54,height=8)
         self.inputinfo.pack()
 
         #天气显示框
-        weatherinfos = LabelFrame(self.root, text='天气信息')
-        weatherinfos.place(x=300, y=5)
+        l4 = Label(self.root, font=('Adobe 黑体 Std', '20'), text='天气信息',
+                   bg='#ccc')
+        l4.place(x=440, y=60)
+        weatherinfos = Frame(self.root,bg='#ccc')
+        weatherinfos.place(x=440, y=90)
         self.weathertext = StringVar()
         tkFont = tkfont.Font(family='Arial', size=14, weight=tkfont.BOLD)
-        self.weather = Label(weatherinfos, fg='yellow', font=tkFont, textvariable=self.weathertext, compound='center')
+        self.weather = Label(weatherinfos, fg='yellow', font=tkFont,bd=0,relief=FLAT,
+                             textvariable=self.weathertext, compound='center')
         self.weather.pack()
         self.weathertext.set('获取天气中请稍等')
         self.weather.config(image=self.chushi)
 
         #天气输入框
-        w1=LabelFrame(self.root,text='请输入天气',width=220,height=60)
-        w1.place(x=300,y=295)
+        l4 = Label(self.root, font=('Adobe 黑体 Std', '20'), text='请输入天气',
+                   bg='#ccc')
+        l4.place(x=440, y=410)
+        w1=Frame(self.root,width=240,height=60,bg='#ccc')
+        w1.place(x=440,y=440)
+
         self.weatherEntry = Entry(w1)
-        b4 = Button(w1,text='天气发送',cursor='hand2',command=self.cityupdate)
-        b4.place(x=148,y=0)
-        self.weatherEntry.place(x=5,y=0)
+        img = PhotoImage(file='image/siliaoweater.png')
+        b4 = Button(w1,text='天气发送',
+                    font=('Adobe 黑体 Std', '14'),
+                    fg='black',
+                    bg='#ccc',
+                    cursor='hand2',command=self.cityupdate)
+        b4.place(x=138,y=0)
+        # b4.config(image=img)
+        self.weatherEntry.place(x=5,y=5)
 
         #用户显示狂
-        userinfos = LabelFrame(self.root, text='用户信息')
-        userinfos.place(x=300, y=360)
-        huakuai4= Scrollbar(userinfos)
-        self.uesrinfo = Listbox(userinfos, width=28, height=2,yscrollcommand=huakuai4.set)
+        l4 = Label(self.root, font=('Adobe 黑体 Std', '20'), text='用户信息',
+                   bg='#ccc')
+        l4.place(x=440, y=530)
+        userinfos = LabelFrame(self.root,bg='#ccc' )
+        userinfos.place(x=450, y=580)
+
+        huakuai4= Scrollbar(userinfos,relief=FLAT,width=5)
+        self.uesrinfo = Listbox(userinfos, width=29,bd=0,relief=FLAT,
+                                bg='#ccc',
+                                height=2,yscrollcommand=huakuai4.set)
         huakuai4.pack(side=RIGHT,fill=Y)
         self.uesrinfo.pack(side=LEFT,fill=BOTH)
         self.uesrinfo.insert(0,self.myname)
@@ -322,14 +356,26 @@ class Pribymoshi:
         self.uesrinfo.bind('<Double-Button-1>', self.get__userallinfo)
 
         #按钮界面
-        anniuinfos = Frame(self.root)
-        anniuinfos.place(x=300, y=450)
-        b1 = Button(anniuinfos,text='发送',command = self.sendtouserinfo)
+        anniuinfos = Frame(self.root,bg='#ccc')
+        anniuinfos.place(x=430, y=670)
+        b1 = Button(anniuinfos,text='发送',
+                    font=('Adobe 黑体 Std', '14'),
+                    fg='black',
+                    bg='#ccc',
+                    command = self.sendtouserinfo)
         b1.grid(row=0,column=0,padx =10)
-        b2 = Button(anniuinfos,text='机器人消息',cursor='hand2',command = self.sendtoaiinfo)
+        b2 = Button(anniuinfos,text='机器人消息',
+                    font=('Adobe 黑体 Std', '14'),
+                    fg='black',
+                    bg='#ccc',
+                    cursor='hand2',command = self.sendtoaiinfo)
         b2.grid(row=0,column=1,padx =10)
-        b3 = Button(anniuinfos,text='退出',cursor='hand2',command = self.destroy)
-        b3.grid(row=0,column=2,padx =10)
+        b3 = Button(anniuinfos,text='退出',
+                    font=('Adobe 黑体 Std', '14'),
+                    fg='black',
+                    bg='#ccc',
+                    cursor='hand2',command = self.destroy)
+        b3.grid(row=0,column=2,padx =8)
         t1 = Thread(target=self.weathersendto)
         t1.start()
 

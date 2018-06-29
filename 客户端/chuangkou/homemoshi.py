@@ -406,10 +406,11 @@ class HomeChat:
             messagebox.showerror(title='有错误！',message='不能与自己建立私聊!')
         else:
             self.connsockfd.sendto(msg.encode(), self.serverddr)
-            self.siliaomoshi = Pribymoshi(self.connsockfd, self.username, othername, self.serverddr)
+            self.siliaomoshi = Pribymoshi(self.connsockfd,
+                                          self.username, othername, self.serverddr)
             self.siliaomoshi.main()
 
-    #建立私聊模式
+    #建立私聊模
     def getlistuser(self):
         #启动线程建立新的私聊模式
         siliao=Thread(target=self.siliao)
@@ -467,7 +468,7 @@ class HomeChat:
 
     #创建房间相关
     def createhome(self):
-        self.cteateh = Toplevel()
+        self.cteateh = Toplevel(self.root)
         self.cteateh.geometry('804x629')
         homezhuce = PhotoImage(file='image/homezhuce.png')
         t2 = Label( self.cteateh, image=homezhuce)
@@ -732,6 +733,7 @@ class HomeChat:
 
         self.root.protocol('WM_DELETE_WINDOW',self.userquit)
         self.root.mainloop()
+
 
 
 
