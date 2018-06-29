@@ -196,7 +196,7 @@ class ServerTkinter:
     #服务器创建房间的界面
     def createhome(self):
         cteateh=Toplevel()
-        cteateh.geometry('1004x819')
+        cteateh.geometry('804x629')
         homezhuce = PhotoImage(file='image/homezhuce.png')
         t2 = Label(cteateh, image=homezhuce)
         t2.place(x=0, y=0)
@@ -204,49 +204,49 @@ class ServerTkinter:
         # Label(cteateh,text='房间密码').place(x=5,y=30)
         self.homename=Entry(cteateh,
                             bd=0,
-                            font=('Adobe 黑体 Std', '36'),
-                            bg='#DACBD2',
+                            font=('Adobe 黑体 Std', '32'),
+                            bg='#5EC6CF',
                             fg='red',
-                            width=15, justify=CENTER,
+                            width=13, justify=CENTER,
                             relief=FLAT,
                             insertbackground='green',
                             # highlightthickness=4,
                             highlightcolor='pink',
                             )
-        self.homename.place(x=400,y=245)
+        self.homename.place(x=330,y=195)
         self.homepassword=Entry(cteateh,
                                 bd=0,
-                                font=('Adobe 黑体 Std', '36'),
-                                bg='#DACBD2',
+                                font=('Adobe 黑体 Std', '32'),
+                                bg='#5EC6CF',
                                 fg='red',
-                                width=15, justify=CENTER,
+                                width=13, justify=CENTER,
                                 relief=FLAT,
                                 insertbackground='green',
                                 # highlightthickness=4,
                                 highlightcolor='pink',
                                 )
-        self.homepassword.place(x=400,y=365)
+        self.homepassword.place(x=330,y=295)
         self.createvar=StringVar()
         Label(cteateh,textvariable=self.createvar, relief=FLAT,
-              bd=0,bg='#DACBD2',font=('Arica','24',),fg='red').place(x=400,y=440)
+              bd=0,bg='#01859E',font=('Arica','14',),fg='yellow').place(x=40,y=40)
         img1 = PhotoImage(file='image/homezhucequeding.png')
         img2 = PhotoImage(file='image/homezhucequxiao.png')
         Button(cteateh,
-               width=135,
-               height=80,
+               width=120,
+               height=60,
                image=img1,
                bd=0,
                relief=FLAT,
                cursor='hand2',
-               command=self.mysqlhomecreate).place(x=200,y=685)
+               command=self.mysqlhomecreate).place(x=116,y=518)
         Button(cteateh,
-               width=135,
-               height=80,
+               width=120,
+               height=60,
                image=img2,
                bd=0,
                relief=FLAT,
                cursor='hand2',
-               command=cteateh.destroy).place(x=380, y=685)
+               command=cteateh.destroy).place(x=312, y=518)
         cteateh.mainloop()
 
     #主窗口

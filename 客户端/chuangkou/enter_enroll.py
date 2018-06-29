@@ -20,9 +20,15 @@ class Dengluzhuce:
         return self.xuanzeliaotianmoshi+':'+self.username
 
     #获得选择的模式的值
-    def printList(self,event):
-        self.xuanzeliaotianmoshi =self.moshilist.get(self.moshilist.curselection())
+    def printList2(self):
+        self.xuanzeliaotianmoshi = '匿名聊天'
         self.liaotianmoshixuanze.destroy()
+
+    #获得选择的模式的值
+    def printList1(self):
+        self.xuanzeliaotianmoshi = '房间聊天'
+        self.liaotianmoshixuanze.destroy()
+
 
     def userquit(self):
         self.xuanzeliaotianmoshi = ''
@@ -39,19 +45,33 @@ class Dengluzhuce:
 
     def xuanzefangshi(self):
         self.liaotianmoshixuanze = Tk()
-        self.xuanze = PhotoImage(file='image/xuanzefangshi.png')
-        self.liaotianmoshixuanze.geometry('300x320')
-        Label(self.liaotianmoshixuanze,text='登录成功！请选择聊天模式',font='Arial',image=self.xuanze,compound='bottom').place(x=0,y=0)
-        self.moshilist = Listbox(self.liaotianmoshixuanze,height=2,listvariable=1,selectmode = BROWSE)
-        self.moshilist.bind('<Double-Button-1>', self.printList)
-        moshi = ['房间聊天','匿名聊天']
-        for i in moshi:
-            self.moshilist.insert(0,str(i))
-        self.moshilist.itemconfig(0,{'bg':'LightGreen'})
-        self.moshilist.itemconfig(1, {'bg': 'DeepSkyBlue'})
-        self.liaotianmoshixuanze.protocol('WM_DELETE_WINDOW', self.userquit)
-        self.moshilist.place(x=82,y=142)
-        mainloop()
+        self.xuanze = PhotoImage(file='image/homeselect.png')
+        self.liaotianmoshixuanze.geometry('704x799')
+        #背景图片设置
+        Label(self.liaotianmoshixuanze,
+              image=self.xuanze,
+              ).place(x=0,y=0)
+        img1 = PhotoImage(file='image/nimingmoshi.png')
+        img2 = PhotoImage(file='image/fangjianmoshi.png')
+        # 匿名模式按钮
+        Button(self.liaotianmoshixuanze,
+               width=325,
+               height=75,
+               image=img1,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',
+               command=self.printList2).place(x=190, y=283)
+        # 房间模式按钮
+        Button(self.liaotianmoshixuanze,
+               width=325,
+               height=75,
+               image=img2,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',
+               command=self.printList1).place(x=190, y=388)
+        self.liaotianmoshixuanze.mainloop()
 
     def get_user_info(self):
         # 获取用户账号密码
@@ -295,7 +315,7 @@ class Dengluzhuce:
                      )
         identitycard = Entry(self.login,
                              bd=0, font=('Helvetica', '21'), bg='#3B87A9',
-                             fg='red', width=12, relief=FLAT, insertbackground='yellow',
+                             fg='red', width=15, relief=FLAT, insertbackground='yellow',
                              highlightthickness=3, highlightcolor='#17536B',
                              highlightbackground='#3B87A9',justify=CENTER,
                              )
@@ -329,30 +349,31 @@ class Dengluzhuce:
                            highlightthickness=3, highlightcolor='#17536B',
                            highlightbackground='#3B87A9', justify=CENTER,
                             validatecommand=(testCMD, '%P'))
-        newuserpasswd.place(x=742,y=165)
         petname.place(x=330,y=168)
+        newuserpasswd.place(x=742,y=165)
         name.place(x=330,y=234)
-        identitycard.place(x=742,y=233)
+        city.place(x=742, y=230)
         age.place(x=330,y=301)
-        sex.place(x=742,y=301)
+        sex.place(x=742,y=296)
         phonnumber.place(x=330, y=368)
-        city.place(x=742,y=368)
-        like.place(x=30,y=39)
+        like.place(x=742,y=368)
+        identitycard.place(x=330,y=430)
+
 
         # 下边的按钮
         zhucequding= PhotoImage(file='image/zhucequding.png')
         zhucequxiao = PhotoImage(file='image/zhucequxiao.png')
         Button(self.login,
-               width=190, height=50,
+               width=165, height=40,
                image=zhucequding, bd=0,
                relief=FLAT,
-               cursor='hand2',command=gets_info).place(x=340,y=420)
+               cursor='hand2',command=gets_info).place(x=595,y=428)
         #取消按钮
         t = Button(self.login,
-                   width=180, height=50,
+                   width=165, height=40,
                    image=zhucequxiao, bd=0,
                    relief=FLAT,
-                   cursor='hand2',command = self.quitzhuce).place(x=750,y=420)
+                   cursor='hand2',command = self.quitzhuce).place(x=790,y=428)
 
         self.login.mainloop()
 

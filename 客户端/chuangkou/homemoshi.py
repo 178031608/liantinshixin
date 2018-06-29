@@ -289,7 +289,10 @@ class HomeChat:
 
     #输入框设置
     def input_info(self,center3):
-        self.inputinfo = Text(center3,width = 54,relief=FLAT,height=4)
+        self.inputinfo = Text(center3,
+                              bg='#f2f2f2',
+                              width = 65,
+                              relief=FLAT,height=5)
         self.inputinfo.pack()
 
     #发送机器人消息
@@ -465,80 +468,108 @@ class HomeChat:
     #创建房间相关
     def createhome(self):
         self.cteateh = Toplevel()
-        self.cteateh.geometry('1004x819')
+        self.cteateh.geometry('804x629')
         homezhuce = PhotoImage(file='image/homezhuce.png')
-        t2 = Label(self.cteateh, image=homezhuce)
+        t2 = Label( self.cteateh, image=homezhuce)
         t2.place(x=0, y=0)
         # Label(cteateh,text=' 房间名').place(x=5,y=5)
         # Label(cteateh,text='房间密码').place(x=5,y=30)
-        self.homename = Entry(self.cteateh,
+        self.homename = Entry( self.cteateh,
                               bd=0,
-                              font=('Adobe 黑体 Std', '36'),
-                              bg='#DACBD2',
+                              font=('Adobe 黑体 Std', '32'),
+                              bg='#5EC6CF',
                               fg='red',
-                              width=15, justify=CENTER,
+                              width=13, justify=CENTER,
                               relief=FLAT,
                               insertbackground='green',
                               # highlightthickness=4,
                               highlightcolor='pink',
                               )
-        self.homename.place(x=400, y=245)
-        self.homepassword = Entry(self.cteateh,
+        self.homename.place(x=330, y=195)
+        self.homepassword = Entry( self.cteateh,
                                   bd=0,
-                                  font=('Adobe 黑体 Std', '36'),
-                                  bg='#DACBD2',
+                                  font=('Adobe 黑体 Std', '32'),
+                                  bg='#5EC6CF',
                                   fg='red',
-                                  width=15, justify=CENTER,
+                                  width=13, justify=CENTER,
                                   relief=FLAT,
                                   insertbackground='green',
                                   # highlightthickness=4,
                                   highlightcolor='pink',
                                   )
-        self.homepassword.place(x=400, y=365)
+        self.homepassword.place(x=330, y=295)
         self.createvar = StringVar()
-        Label(self.cteateh, textvariable=self.createvar, relief=FLAT,
-              bd=0, bg='#DACBD2', font=('Arica', '24',), fg='red').place(x=400, y=440)
+        Label( self.cteateh, textvariable=self.createvar, relief=FLAT,
+              bd=0, bg='#01859E', font=('Arica', '14',), fg='yellow').place(x=40, y=40)
         img1 = PhotoImage(file='image/homezhucequeding.png')
         img2 = PhotoImage(file='image/homezhucequxiao.png')
-        Button(self.cteateh,
-               width=135,
-               height=80,
+        Button( self.cteateh,
+               width=120,
+               height=60,
                image=img1,
                bd=0,
                relief=FLAT,
                cursor='hand2',
-               command=self.homecreate).place(x=200, y=685)
-        Button(self.cteateh,
-               width=135,
-               height=80,
+               command=self.homecreate).place(x=116, y=518)
+        Button( self.cteateh,
+               width=120,
+               height=60,
                image=img2,
                bd=0,
                relief=FLAT,
                cursor='hand2',
-               command=self.cteateh.destroy).place(x=380, y=685)
+               command= self.cteateh.destroy).place(x=312, y=518)
         self.cteateh.mainloop()
 
 
     #主模块开启循环
     def root_main(self):
         self.root = Tk()
+        self.root.geometry('1004x737')
         self.im = PhotoImage(file='image/userinfo.png')
         self.fangjian = PhotoImage(file='image/fangjian.png')
         chushihua=PhotoImage(file='image/weather/chushihua.png')
         self.yanzheng = PhotoImage(file='image/fagnjianyanzheng.png')
         self.creHomeimg=PhotoImage(file='image/createhome.png')
+        liaotianjiemian = PhotoImage(file='image/liaotianjiemian.png')
         self.root.title('欢迎用户:<'+self.username+'>你好')
+        Label(self.root,image=liaotianjiemian).place(x=0,y=0)
+        #导航栏
+        daohang =Frame(self.root,
+                width=1000,
+                height=65,
+                bg='#313131',
+                bd=0,
+                relief=FLAT,
+              )
+        daohang.place(x=0,y=0)
+        #重选房间创建房间按钮
+        img1 = PhotoImage(file='image/fangjianxuaze.png')
+        img2 = PhotoImage(file='image/createhome.png')
+        #两个按钮
+        Button(daohang,
+               width=150,
+               height=30,
+               image=img1,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',
+               command=self.userquit1).place(x=50, y=12)
+        Button(daohang,
+               width=70,
+               height=30,
+               image=img2,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',
+               command=self.createhome).place(x=230, y=15)
 
-        # 菜单相关
-        menubar = Menu(self.root)
-        menubar.add_command(label='重新选择聊天方式',command=self.userquit1)
-        menubar.add_command(label='创建房间',command=self.createhome)
-        # 菜单实例应用到大窗口中
-        self.root['menu'] = menubar
 
+        Label(self.root,)
         #房间显示窗口
-        left1 = LabelFrame(self.root,text='房间列表',width = 100,height=500)
-        left1.grid(row=0,column=0,rowspan = 5,padx=5)
+        left1 = Frame(self.root,
+                           width = 184,height=125)
+        left1.place(x=15,y=120)
         self.yonghuxuanzedefangjian = StringVar()
         tkFont1 = tkfont.Font(family='Arial', size=12, weight=tkfont.BOLD)
         t1 =Label(left1,textvariable=self.yonghuxuanzedefangjian,font=tkFont1,image=self.fangjian, \
@@ -546,12 +577,15 @@ class HomeChat:
         t1.pack(side='top')
 
         # 滑块组件
-        listhuakuai = Scrollbar(left1)
+        listhuakuai = Scrollbar(left1,relief=FLAT,width=5)
         listhuakuai.pack(side=RIGHT, fill=Y)
-        xhuakuai = Scrollbar(left1,orient=HORIZONTAL)
+        xhuakuai = Scrollbar(left1,orient=HORIZONTAL,
+        relief = FLAT, width = 5)
         xhuakuai.pack(side=BOTTOM, fill=X)
         # 房间列表组件
-        self.lstb = Listbox(left1, width=18, height=21, yscrollcommand=listhuakuai.set,xscrollcommand=xhuakuai.set)
+        self.lstb = Listbox(left1,bg='#ccc',
+                            relief=FLAT, bd=0,
+                            width=27, height=26, yscrollcommand=listhuakuai.set,xscrollcommand=xhuakuai.set)
         self.lstb.pack(side=LEFT,fill=BOTH)
         listhuakuai.config(command=self.lstb.yview)
         xhuakuai.config(command=self.lstb.xview)
@@ -559,12 +593,15 @@ class HomeChat:
         self.lstb.bind('<Double-Button-1>', self.gethomeuser)
 
         #聊天窗口
-        center1 = LabelFrame(self.root,text='聊天信息',width=400,height =100)
-        center1.grid(row = 0,column=1,rowspan=3)
+        center1 = Frame(self.root)
+        center1.place(x=216,y=105)
 
         #信息显示信息
-        infoscr = Scrollbar(center1)
-        self.infotext = Text(center1,width=52,height=25,relief=FLAT,yscrollcommand = infoscr.set)
+        infoscr = Scrollbar(center1,relief=FLAT,width=5)
+        self.infotext = Text(center1,
+                             bg='#f2f2f2',
+                             # bg='red',
+                             width=65,height=31,relief=FLAT,yscrollcommand = infoscr.set)
         infoscr.grid(row=0,column=1,sticky='ns')
         self.infotext.grid(row=0,column=0)
         infoscr.config(command=self.infotext.yview)
@@ -572,10 +609,11 @@ class HomeChat:
         self.infotext.config(state=DISABLED)
 
         #机器人窗口
-        center2 = LabelFrame(self.root,text='机器人消息',width=400,height=80)
-        center2.grid(row=3,column=1)
-        aisc = Scrollbar(center2)
-        self.recvinfofromai = Text(center2,width=52,height=5,relief=FLAT,yscrollcommand=aisc.set)
+        center2 = Frame(self.root,width=400,height=80)
+        center2.place(x=216,y=534)
+
+        aisc = Scrollbar(center2,relief=FLAT,width=5)
+        self.recvinfofromai = Text(center2,bg='#f2f2f2',width=65,height=6,relief=FLAT,yscrollcommand=aisc.set)
         aisc.grid(row=0, column=1, sticky='ns')
         self.recvinfofromai.grid(row=0, column=0)
         aisc.config(command=self.recvinfofromai.yview)
@@ -583,35 +621,63 @@ class HomeChat:
         self.recvinfofromai.config(state=DISABLED)
 
         #输入框
-        center3 = LabelFrame(self.root,text='聊天信息输入框',width=400,height=60)
-        center3.grid(row=4,column=1)
+        center3 = Frame(self.root,bg='#ccc')
+        center3.place(x=216,y=645)
 
-        #输入框设置
+        #天气设置
         self.input_info(center3)
-        right1 = LabelFrame(self.root,text='天气显示框',width=100,height=350)
-        right1.grid(row=0,column=2,columnspan=3,pady=5,padx=5)
+
+        right1 = Frame(self.root)
+        right1.place(x=703,y=103)
         self.weathertext=StringVar()
         tkFont=tkfont.Font(family='Arial',size=14,weight=tkfont.BOLD)
-        self.weather = Label(right1,fg='yellow',font=tkFont,textvariable=self.weathertext,compound='center')
+        self.weather = Label(right1,
+                             bd =0,relief=FLAT,
+                             fg='yellow',font=tkFont,textvariable=self.weathertext,compound='center')
         self.weather.pack()
         self.weathertext.set('获取天气中请稍等')
         self.weather.config(image=chushihua)
 
 
         #城市输入框
-        w1 = LabelFrame(self.root, text='请输入天气', width=219, height=60)
-        w1.grid(row=1,column=2,padx=5)
-        self.cityinput = Entry(w1)
-        b4 = Button(w1, text='天气发送', cursor='hand2', command=self.cityupdate)
-        b4.place(x=148, y=0)
+        w1 = Frame(self.root,height=40,width=301,bg='#ccc')
+        w1.place(x=704,y=470)
+
+        self.cityinput = Entry(w1,
+                               bd=0,
+                               font=('Adobe 黑体 Std', '19'),
+                                bg = '#f2f2f2',
+                               # bg='yellow',
+                               fg='red',
+                               width=13, justify=CENTER,
+                               relief=FLAT,
+                               insertbackground='green',
+                               # highlightthickness=4,
+                               highlightcolor='pink',
+                               )
+        img3 = PhotoImage(file='image/weaterfasong.png')
+        b4 = Button(w1,
+                    width=95,
+                    height=33,
+                    image=img3,
+                    bd=0,
+                    relief=FLAT,
+                    cursor='hand2',
+                    command=self.cityupdate)
+        b4.place(x=170, y=0)
         self.cityinput.place(x=5, y=5)
 
         #房间用户信息框
-        right4 = LabelFrame(self.root,text='房间内用户信息',width=200,height=100)
-        right4.grid(row=3,column=2,columnspan=3,pady=5)
-        huauser = Scrollbar(right4)
+        right4 = Frame(self.root,width=200,height=75,bg='#ccc')
+        right4.place(x=704,y=547)
+
+        huauser = Scrollbar(right4
+                            , relief=FLAT, width=5
+                            )
         # 列表组件
-        self.listuser = Listbox(right4, width=26, height=3, yscrollcommand=huauser.set)
+        self.listuser = Listbox(right4,
+                                relief=FLAT,bd=0,
+                                bg='#f2f2f2', width=38, height=4, yscrollcommand=huauser.set)
         self.listuser.grid(row=0, column=0)
         huauser.grid(row=0, column=1, sticky='ns')
         huauser.config(command=self.listuser.yview)
@@ -620,17 +686,42 @@ class HomeChat:
         #发送确定退出模块
         #发送按钮
 
-        right5 = Frame(self.root,width=200,height=40)
-        right5.grid(row=4,column=2,columnspan=2,pady=5)
+        # right5 = Frame(self.root,width=200,height=40)
+        # right5.place(x=700,y=700)
 
-        t1 = Button(right5,text='发送',command = self.show_infos)
-        t1.grid(row=0,column=1,padx = 10)
-        t2 = Button(right5, text='机器人消息',cursor='hand2', command=self.sendtoAIinfo)
-        t2.grid(row=0, column=2,padx = 10)
-        t3 = Button(right5, text='私聊', cursor='hand2',command=self.getlistuser)
+        img4 = PhotoImage(file='image/fasong.png')
+        img5 = PhotoImage(file='image/aifosong.png')
+        img6 = PhotoImage(file='image/siliaobtn.png')
+
+        t1 = Button(self.root,
+                    width=57,
+                    height=33,
+                    image=img4,
+                    bd=0,
+                    relief=FLAT,
+                    cursor='hand2',
+                    command = self.show_infos)
+        t1.place(x=713,y=664)
+        t2 = Button(self.root,
+                    width=107,
+                    height=35,
+                    image=img5,
+                    bd=0,
+                    relief=FLAT,
+                    cursor='hand2',
+                    command=self.sendtoAIinfo)
+        t2.place(x=786,y=662)
+        t3 = Button(self.root,
+                    width=50,
+                    height=33,
+                    image=img6,
+                    bd=0,
+                    relief=FLAT,
+                    cursor='hand2',
+                    command=self.getlistuser)
         # t4 = Button(right5,text='重新选择聊天方式',command=self.userquit1)
         # t4.grid(row=1,column=2,pady=5)
-        t3.grid(row=0, column=3,padx = 10)
+        t3.place(x=908,y=664)
         s = '*获取房间列表:'
         self.connsockfd.sendto(s.encode(), self.serverddr)
         t1 = Thread(target=self.recvinfo)
