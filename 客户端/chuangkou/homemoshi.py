@@ -132,12 +132,39 @@ class HomeChat:
         #创建TOP组件
 
         top1 = Toplevel(self.root)
-        top1.geometry('500x318' )
+        top1.geometry('1004x692' )
+
+        Label(top1,image=self.img10).place(x=0,y=0)
+        agestr=StringVar()
+        Label(top1,textvariable=agestr,font=('Asria','18'),bd=0,bg='#F9F5F5',).place(x=540,y=145)
+        sexstr = StringVar()
+        Label(top1, textvariable=sexstr, bd=0,font=('Asria','18'), bg='#F9F5F5', ).place(x=540, y=210)
+        likestr = StringVar()
+        Label(top1, textvariable=likestr,font=('Asria','18'), bd=0, bg='#F9F5F5', ).place(x=540, y=280)
+        citystr = StringVar()
+        Label(top1, textvariable=citystr,font=('Asria','18'), bd=0, bg='#F9F5F5', ).place(x=540, y=345)
+        phonestr = StringVar()
+        Label(top1, textvariable=phonestr,font=('Asria','10'), bd=0, bg='#F9F5F5', ).place(x=610, y=420)
+        timestr = StringVar()
+        Label(top1, textvariable=timestr,font=('Asria','10'), bd=0, bg='#F9F5F5', ).place(x=610, y=480)
+        agestr.set(t[0])
+        sexstr.set(t[1])
+        likestr.set(t[2])
+        citystr.set(t[3])
+        phonestr.set(t[4])
+        timestr.set(t[5])
+
         s = '年龄:    '+t[0]+'\n'+ '性别:    '+t[1]+'\n'+'爱好:    '+t[2]+'\n'+'城市:    '+t[3]+'\n'\
             +'手机号码:  '+t[4]+'\n'+'注册时间: '+t[5]
-        t1=Label(top1,text=s,font='Arial',image=self.im,compound='center',justify='left')
-        t1.place(x=0,y=0,width=500)
-        Button(top1,text='退出',cursor='hand2',command=top1.destroy).place(x=300,y=225)
+        # t1=Label(top1,text=s,font='Arial',image=self.im,compound='center',justify='left')
+        # t1.place(x=0,y=0,width=500)
+        Button(top1,image=self.infotuichu,
+               width=170,
+               height=60,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',command=top1.destroy).place(x=502,y=535)
+        # top1.mainloop()
 
 
 
@@ -533,6 +560,8 @@ class HomeChat:
         self.yanzheng = PhotoImage(file='image/fagnjianyanzheng.png')
         self.creHomeimg=PhotoImage(file='image/createhome.png')
         liaotianjiemian = PhotoImage(file='image/liaotianjiemian.png')
+        self.img10 = PhotoImage(file='image/info.png')
+        self.infotuichu = PhotoImage(file='image/infotuichu.png')
         self.root.title('欢迎用户:<'+self.username+'>你好')
         Label(self.root,relief=FLAT,image=liaotianjiemian).place(x=0,y=0)
         Label(self.root, bg='#ccc', width=100, height=100).place(x=1000, y=65)
@@ -575,7 +604,7 @@ class HomeChat:
         self.yonghuxuanzedefangjian = StringVar()
         tkFont1 = tkfont.Font(family='Arial', size=12, weight=tkfont.BOLD)
         t1 =Label(left1,textvariable=self.yonghuxuanzedefangjian,font=tkFont1,
-                  image=self.fangjian, \
+                  image=self.fangjian,
                      fg='Green',compound='center',width=140,height=100)
         t1.pack(side='top')
 

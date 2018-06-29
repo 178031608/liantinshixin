@@ -106,14 +106,15 @@ class Dengluzhuce:
         print(info[:5])
         t1 = Toplevel(self.getps)
         t1.geometry('220x200' )
-        Label(t1,text=info).pack()
+        Label(t1,text=info).place(x=50,y=50)
         if info[:5] == '用户账号:':
-            b1 = Button(t1,text='确定',cursor='hand2',command=self.getps.destroy)
-            b1.pack(side='bottom')
+            b1 = Button(t1,text='确定',bg='#ccc',cursor='hand2',command=self.getps.destroy)
+            b1.place(x=80,y=150)
         else:
-            b1 = Button(t1, text='再试一次',cursor='hand2', command=t1.destroy)
-            b1.pack(side='bottom')
-
+            b1 = Button(t1, text='再试一次',
+                        bg='#ccc',
+                        cursor='hand2', command=t1.destroy)
+            b1.place(x=80,y=150)
 
     #找回密码功能
     def getbackuserpassword(self):
@@ -152,6 +153,7 @@ class Dengluzhuce:
                relief=FLAT,
                 cursor='hand2',command = self.getbacktijiao).place(x =210,y = 415)
         self.getps.mainloop()
+
     def enter_Tk(self):
         s = '欢迎来到聊天室请登录'
         self.root.geometry('1184x537')
