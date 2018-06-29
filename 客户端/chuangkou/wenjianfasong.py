@@ -94,6 +94,7 @@ class Wenjian:
         #界面搭建
         self.win = Toplevel(bg='#CCCCCC')
         self.win.geometry('370x250')
+        self.win.iconbitmap('image/tubiao.ico')
         self.win.title('发送给 %s 的文件'%self.othername)
         l1 = Label(self.win,bg='#313131',bd=0,relief=FLAT,width=100,height=2)
         l1.place(x=0,y=0)

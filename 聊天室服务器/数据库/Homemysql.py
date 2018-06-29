@@ -19,21 +19,24 @@ class Homeinfo:
 
     #获取所有房间列表
     def gain_home_list(self):
-        cursr = self.db.cursor()
-        select = 'select homename,homepassword from homelist;'
-        cursr.execute(select)
-        self.db.commit()
-        data = cursr.fetchall()
-        cursr.close()
-        homel = ''
-        for x in data:
-            if x[0] == '匿名房间':
-                continue
-            #房间名字加房间密码&连接
-            homel += x[0]+'@'+x[1]+':'
+        try:
+            cursr = self.db.cursor()
+            select = 'select homename,homepassword from homelist;'
+            cursr.execute(select)
+            self.db.commit()
+            data = cursr.fetchall()
+            cursr.close()
+            homel = ''
+            for x in data:
+                if x[0] == '匿名房间':
+                    continue
+                #房间名字加房间密码&连接
+                homel += x[0]+'@'+x[1]+':'
 
-        # print('房间数据库里的所有房间列表',homel)
-        return homel
+            # print('房间数据库里的所有房间列表',homel)
+            return homel
+        except :
+            pass
 
 
 
@@ -87,11 +90,12 @@ class Homeinfo:
             where homename='"+homename+"';"
             cursr.execute(select)
             self.db.commit()
+
+            data = cursr.fetchall()
         except:
             pass
         finally:
             cursr.close()
-        data = cursr.fetchall()
         print('data',data)
         return data
 

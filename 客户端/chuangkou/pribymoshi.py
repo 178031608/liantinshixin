@@ -165,7 +165,7 @@ class Pribymoshi:
 
         top1 = Toplevel()
         top1.geometry('1004x692')
-
+        top1.iconbitmap('image/tubiao.ico')
         Label(top1, image=self.img10).place(x=0, y=0)
         agestr = StringVar()
         Label(top1, textvariable=agestr, font=('Asria', '18'), bd=0, bg='#F9F5F5', ).place(x=540, y=145)
@@ -283,7 +283,7 @@ class Pribymoshi:
         self.root.title('与 '+self.othername+' 的私聊！')
         self.im = PhotoImage(file='image/userinfo.png')
         self.chushi = PhotoImage(file='image/weather/chushihua.png')
-
+        self.root.iconbitmap('image/tubiao.ico')
 
         l1 = Label(self.root,width=150,height=3,bg='#313131')
         l1.place(x=0,y=0)

@@ -174,6 +174,7 @@ class Nimingliaotian:
         self.root = Tk()
         self.root.title('欢迎来到匿名聊天模式！')
         self.root.geometry('1004x799')
+        self.root.iconbitmap('image/tubiao.ico')
         chushihua = PhotoImage(file='image/weather/chushihua.png')
         nimingjiemian = PhotoImage(file='image/nimingliaotian.png')
         Label(self.root, image=nimingjiemian).place(x=0, y=0)
@@ -187,7 +188,7 @@ class Nimingliaotian:
                bd=0,
                relief=FLAT,
                cursor='hand2',
-               command=self.userquit).place(x=50, y=12)
+               command=self.userquit).place(x=50, y=20)
 
         # #菜单相关
         # menubar = Menu(self.root)

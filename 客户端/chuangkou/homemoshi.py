@@ -133,7 +133,7 @@ class HomeChat:
 
         top1 = Toplevel(self.root)
         top1.geometry('1004x692' )
-
+        top1.iconbitmap('image/tubiao.ico')
         Label(top1,image=self.img10).place(x=0,y=0)
         agestr=StringVar()
         Label(top1,textvariable=agestr,font=('Asria','18'),bd=0,bg='#F9F5F5',).place(x=540,y=145)
@@ -154,10 +154,10 @@ class HomeChat:
         phonestr.set(t[4])
         timestr.set(t[5])
 
-        s = '年龄:    '+t[0]+'\n'+ '性别:    '+t[1]+'\n'+'爱好:    '+t[2]+'\n'+'城市:    '+t[3]+'\n'\
-            +'手机号码:  '+t[4]+'\n'+'注册时间: '+t[5]
-        # t1=Label(top1,text=s,font='Arial',image=self.im,compound='center',justify='left')
-        # t1.place(x=0,y=0,width=500)
+        # s = '年龄:    '+t[0]+'\n'+ '性别:    '+t[1]+'\n'+'爱好:    '+t[2]+'\n'+'城市:    '+t[3]+'\n'\
+        #     +'手机号码:  '+t[4]+'\n'+'注册时间: '+t[5]
+        # # t1=Label(top1,text=s,font='Arial',image=self.im,compound='center',justify='left')
+        # # t1.place(x=0,y=0,width=500)
         Button(top1,image=self.infotuichu,
                width=170,
                height=60,
@@ -251,6 +251,7 @@ class HomeChat:
         self.hpwd=Toplevel()
         self.hpwd.geometry('350x300')
         self.hpwd.title('有密码的房间')
+        self.hpwd.iconbitmap('image/tubiao.ico')
         phon = Label(self.hpwd,image=self.yanzheng)
         phon.place(x=0,y=0)
         Label(self.hpwd,text='你想要进入有密码的房间请输入密码',font='Arita',fg='red').place(x=65,y=85)
@@ -497,6 +498,7 @@ class HomeChat:
     def createhome(self):
         self.cteateh = Toplevel(self.root)
         self.cteateh.geometry('804x629')
+        self.cteateh.iconbitmap('image/tubiao.ico')
         homezhuce = PhotoImage(file='image/homezhuce.png')
         t2 = Label( self.cteateh, image=homezhuce)
         t2.place(x=0, y=0)
@@ -554,6 +556,7 @@ class HomeChat:
     def root_main(self):
         self.root = Tk()
         self.root.geometry('1054x737')
+        self.root.iconbitmap('image/tubiao.ico')
         self.im = PhotoImage(file='image/userinfo.png')
         self.fangjian = PhotoImage(file='image/fangjian.png')
         chushihua=PhotoImage(file='image/weather/chushihua.png')

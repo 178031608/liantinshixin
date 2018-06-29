@@ -45,6 +45,7 @@ class Dengluzhuce:
 
     def xuanzefangshi(self):
         self.liaotianmoshixuanze = Tk()
+        self.liaotianmoshixuanze.iconbitmap('image/tubiao.ico')
         self.xuanze = PhotoImage(file='image/homeselect.png')
         self.liaotianmoshixuanze.geometry('704x799')
         #背景图片设置
@@ -120,6 +121,7 @@ class Dengluzhuce:
     def getbackuserpassword(self):
         self.getps = Toplevel(self.root)
         self.getps.geometry('500x510')
+        self.getps.iconbitmap('image/tubiao.ico')
         bm = PhotoImage(file='image/zhaohuimima.png')
         l1 =Label(self.getps,image=bm)
 
@@ -158,8 +160,7 @@ class Dengluzhuce:
         s = '欢迎来到聊天室请登录'
         self.root.geometry('1184x537')
         self.root.title(s)
-        self.root.iconbitmap('image/tb.ico')
-
+        self.root.iconbitmap('image/tubiao.ico')
         bm = PhotoImage(file="image/denglu.png")
         t2 = Label(self.root, image=bm)
         t2.place(x=0,y=0)
@@ -294,7 +295,8 @@ class Dengluzhuce:
                 if data.decode()[0] != 'Y':
                     message.showerror(title='注册用户出错了',message=data)
                 else:
-                    message.showerror(title='注册用户成功了', message=data[2:])
+                    print(data.decode())
+                    message.showerror(title='注册用户成功了', message=data[2:].decode())
 
                 # ********************************************
 
@@ -307,7 +309,7 @@ class Dengluzhuce:
         self.login = Toplevel(self.root,bd=0,relief=FLAT)
         testCMD = self.root.register(test)
         self.login.geometry('1184x537')
-
+        self.login.iconbitmap('image/tubiao.ico')
         bm1 = PhotoImage(file="image/zhucescreen.png")
         Label(self.login,image=bm1).place(x=0,y=0)
 
