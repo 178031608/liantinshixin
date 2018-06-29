@@ -117,16 +117,41 @@ class Dengluzhuce:
 
     #找回密码功能
     def getbackuserpassword(self):
-        self.getps = Toplevel()
-        self.getps.geometry('220x200')
-        Label(self.getps, text='身份证号').place(x=5, y=50)
-        Label(self.getps, text='手机号').place(x=5, y=110)
-        self.getbackidshenfenzheng = Entry(self.getps)
-        self.getbackphone = Entry(self.getps)
-        self.getbackidshenfenzheng.place(x = 55,y=50)
-        self.getbackphone.place(x = 55,y=110)
-        Button(self.getps,text='确定',cursor='hand2',command = self.getbacktijiao).place(x =80,y = 170)
+        self.getps = Toplevel(self.root)
+        self.getps.geometry('500x510')
+        bm = PhotoImage(file='image/zhaohuimima.png')
+        l1 =Label(self.getps,image=bm)
 
+        l1.place(x=0,y=0)
+        # Label(self.getps, text='身份证号').place(x=5, y=50)
+        # Label(self.getps, text='手机号').place(x=5, y=110)
+        self.getbackidshenfenzheng = Entry(self.getps,
+                                           font=('Adobe 黑体 Std', '28'),
+                                           width=16,
+                                           bd=0, bg='#CCCCCC',
+                                           fg='red',  relief=FLAT, insertbackground='yellow',
+                                           highlightthickness=3, highlightcolor='#17536B',
+                                           highlightbackground='#3B87A9', justify=CENTER,
+                                           )
+        self.getbackphone = Entry(self.getps,
+                                  font=('Adobe 黑体 Std', '28'),
+                                  width=16,
+                                  bd=0, bg='#CCCCCC',
+                                  fg='red', relief=FLAT, insertbackground='yellow',
+                                  highlightthickness=3, highlightcolor='#17536B',
+                                  highlightbackground='#3B87A9', justify=CENTER,
+                                  )
+        self.getbackidshenfenzheng.place(x = 151,y=203)
+        self.getbackphone.place(x = 151,y=325)
+        img2 = PhotoImage(file='image/zhaohuimimaqueding.png')
+        Button(self.getps,
+               width=80,
+               height=70,
+               image=img2,
+               bd=0,
+               relief=FLAT,
+                cursor='hand2',command = self.getbacktijiao).place(x =210,y = 415)
+        self.getps.mainloop()
     def enter_Tk(self):
         s = '欢迎来到聊天室请登录'
         self.root.geometry('1184x537')

@@ -177,6 +177,7 @@ class Nimingliaotian:
         chushihua = PhotoImage(file='image/weather/chushihua.png')
         nimingjiemian = PhotoImage(file='image/nimingliaotian.png')
         Label(self.root, image=nimingjiemian).place(x=0, y=0)
+
         #重新选择房间按钮
         img1 = PhotoImage(file='image/fangjianxuaze.png')
         Button(self.root,

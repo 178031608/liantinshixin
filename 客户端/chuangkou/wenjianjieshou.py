@@ -103,7 +103,7 @@ class Wenjianjieshou:
                bg='#F2F2F2',
                cursor='hand2',
                command=self.jujuejieshoufile).place(x=260, y=215)
-        mainloop()
+        # mainloop()
 
 if __name__ == '__main__':
     a = Wenjianjieshou(2,3,6,1)

@@ -243,7 +243,7 @@ class Pribymoshi:
     def main(self):
         self.root = Toplevel(bg='#ccc'
                              )
-        self.root.geometry('720x738')
+        self.root.geometry('770x738')
         self.root.title('与 '+self.othername+' 的私聊！')
         self.im = PhotoImage(file='image/userinfo.png')
         self.chushi = PhotoImage(file='image/weather/chushihua.png')
@@ -323,9 +323,9 @@ class Pribymoshi:
         #天气输入框
         l4 = Label(self.root, font=('Adobe 黑体 Std', '20'), text='请输入天气',
                    bg='#ccc')
-        l4.place(x=440, y=410)
-        w1=Frame(self.root,width=240,height=60,bg='#ccc')
-        w1.place(x=440,y=440)
+        l4.place(x=440, y=440)
+        w1=Frame(self.root,width=270,height=60,bg='#ccc')
+        w1.place(x=440,y=480)
 
         self.weatherEntry = Entry(w1)
         img = PhotoImage(file='image/siliaoweater.png')
@@ -334,7 +334,7 @@ class Pribymoshi:
                     fg='black',
                     bg='#ccc',
                     cursor='hand2',command=self.cityupdate)
-        b4.place(x=138,y=0)
+        b4.place(x=168,y=0)
         # b4.config(image=img)
         self.weatherEntry.place(x=5,y=5)
 
@@ -342,12 +342,15 @@ class Pribymoshi:
         l4 = Label(self.root, font=('Adobe 黑体 Std', '20'), text='用户信息',
                    bg='#ccc')
         l4.place(x=440, y=530)
-        userinfos = LabelFrame(self.root,bg='#ccc' )
+        userinfos = Frame(self.root,bg='#ccc' )
         userinfos.place(x=450, y=580)
 
         huakuai4= Scrollbar(userinfos,relief=FLAT,width=5)
-        self.uesrinfo = Listbox(userinfos, width=29,bd=0,relief=FLAT,
-                                bg='#ccc',
+        self.uesrinfo = Listbox(userinfos, width=26,
+                                font=('Adobe 黑体 Std', '16'),
+                                bd=0,
+                                relief=FLAT,
+                                bg='#f2f2f2',
                                 height=2,yscrollcommand=huakuai4.set)
         huakuai4.pack(side=RIGHT,fill=Y)
         self.uesrinfo.pack(side=LEFT,fill=BOTH)
@@ -375,7 +378,7 @@ class Pribymoshi:
                     fg='black',
                     bg='#ccc',
                     cursor='hand2',command = self.destroy)
-        b3.grid(row=0,column=2,padx =8)
+        b3.grid(row=0,column=2,padx =10)
         t1 = Thread(target=self.weathersendto)
         t1.start()
 

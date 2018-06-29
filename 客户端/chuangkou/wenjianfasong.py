@@ -125,7 +125,7 @@ class Wenjian:
         self.var.set('开始')
         # self.button = Button(self.win, textvariable=self.var, command=self.progressbar_thread, width=5)
         # self.button.place(x=220,y=80)
-        self.win.mainloop()
+        # self.win.mainloop()
 
 
 

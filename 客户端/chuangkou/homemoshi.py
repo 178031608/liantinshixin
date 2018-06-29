@@ -526,7 +526,7 @@ class HomeChat:
     #主模块开启循环
     def root_main(self):
         self.root = Tk()
-        self.root.geometry('1004x737')
+        self.root.geometry('1054x737')
         self.im = PhotoImage(file='image/userinfo.png')
         self.fangjian = PhotoImage(file='image/fangjian.png')
         chushihua=PhotoImage(file='image/weather/chushihua.png')
@@ -534,11 +534,12 @@ class HomeChat:
         self.creHomeimg=PhotoImage(file='image/createhome.png')
         liaotianjiemian = PhotoImage(file='image/liaotianjiemian.png')
         self.root.title('欢迎用户:<'+self.username+'>你好')
-        Label(self.root,image=liaotianjiemian).place(x=0,y=0)
+        Label(self.root,relief=FLAT,image=liaotianjiemian).place(x=0,y=0)
+        Label(self.root, bg='#ccc', width=100, height=100).place(x=1000, y=65)
         #导航栏
         daohang =Frame(self.root,
-                width=1000,
-                height=65,
+                width=10000,
+                height=68,
                 bg='#313131',
                 bd=0,
                 relief=FLAT,
@@ -570,23 +571,28 @@ class HomeChat:
         #房间显示窗口
         left1 = Frame(self.root,
                            width = 184,height=125)
-        left1.place(x=15,y=120)
+        left1.place(x=12,y=120)
         self.yonghuxuanzedefangjian = StringVar()
         tkFont1 = tkfont.Font(family='Arial', size=12, weight=tkfont.BOLD)
-        t1 =Label(left1,textvariable=self.yonghuxuanzedefangjian,font=tkFont1,image=self.fangjian, \
+        t1 =Label(left1,textvariable=self.yonghuxuanzedefangjian,font=tkFont1,
+                  image=self.fangjian, \
                      fg='Green',compound='center',width=140,height=100)
         t1.pack(side='top')
 
         # 滑块组件
-        listhuakuai = Scrollbar(left1,relief=FLAT,width=5)
+        listhuakuai = Scrollbar(left1,relief=FLAT,width=2)
         listhuakuai.pack(side=RIGHT, fill=Y)
-        xhuakuai = Scrollbar(left1,orient=HORIZONTAL,
-        relief = FLAT, width = 5)
+        xhuakuai = Scrollbar(left1,orient=HORIZONTAL,bg='#ccc',
+            relief = FLAT, width = 2)
         xhuakuai.pack(side=BOTTOM, fill=X)
         # 房间列表组件
-        self.lstb = Listbox(left1,bg='#ccc',
-                            relief=FLAT, bd=0,
-                            width=27, height=26, yscrollcommand=listhuakuai.set,xscrollcommand=xhuakuai.set)
+        self.lstb = Listbox(left1,
+                            font=('Adobe 黑体 Std', '15'),
+                            bd=0,
+                            relief=FLAT,
+                            bg='#CCC', width=19,
+
+                            height=22, yscrollcommand=listhuakuai.set,xscrollcommand=xhuakuai.set)
         self.lstb.pack(side=LEFT,fill=BOTH)
         listhuakuai.config(command=self.lstb.yview)
         xhuakuai.config(command=self.lstb.xview)
@@ -642,7 +648,7 @@ class HomeChat:
 
 
         #城市输入框
-        w1 = Frame(self.root,height=40,width=301,bg='#ccc')
+        w1 = Frame(self.root,height=40,width=325,bg='#ccc')
         w1.place(x=704,y=470)
 
         self.cityinput = Entry(w1,
@@ -678,8 +684,11 @@ class HomeChat:
                             )
         # 列表组件
         self.listuser = Listbox(right4,
-                                relief=FLAT,bd=0,
-                                bg='#f2f2f2', width=38, height=4, yscrollcommand=huauser.set)
+                                font=('Adobe 黑体 Std', '16'),
+                                bd=0,
+                                relief=FLAT,
+                                bg='#f2f2f2', width=26, height=4,
+                                yscrollcommand=huauser.set)
         self.listuser.grid(row=0, column=0)
         huauser.grid(row=0, column=1, sticky='ns')
         huauser.config(command=self.listuser.yview)
