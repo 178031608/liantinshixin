@@ -196,16 +196,58 @@ class ServerTkinter:
     #服务器创建房间的界面
     def createhome(self):
         cteateh=Toplevel()
-        Label(cteateh,text=' 房间名').place(x=5,y=5)
-        Label(cteateh,text='房间密码').place(x=5,y=30)
-        self.homename=Entry(cteateh)
-        self.homename.place(x=70,y=5)
-        self.homepassword=Entry(cteateh)
-        self.homepassword.place(x=70,y=30)
+        cteateh.geometry('1004x819')
+        homezhuce = PhotoImage(file='image/homezhuce.png')
+        t2 = Label(cteateh, image=homezhuce)
+        t2.place(x=0, y=0)
+        # Label(cteateh,text=' 房间名').place(x=5,y=5)
+        # Label(cteateh,text='房间密码').place(x=5,y=30)
+        self.homename=Entry(cteateh,
+                            bd=0,
+                            font=('Adobe 黑体 Std', '36'),
+                            bg='#DACBD2',
+                            fg='red',
+                            width=15, justify=CENTER,
+                            relief=FLAT,
+                            insertbackground='green',
+                            # highlightthickness=4,
+                            highlightcolor='pink',
+                            )
+        self.homename.place(x=400,y=245)
+        self.homepassword=Entry(cteateh,
+                                bd=0,
+                                font=('Adobe 黑体 Std', '36'),
+                                bg='#DACBD2',
+                                fg='red',
+                                width=15, justify=CENTER,
+                                relief=FLAT,
+                                insertbackground='green',
+                                # highlightthickness=4,
+                                highlightcolor='pink',
+                                )
+        self.homepassword.place(x=400,y=365)
         self.createvar=StringVar()
-        Label(cteateh,textvariable=self.createvar,font='Arica',fg='red').place(x=20,y=50)
-        Button(cteateh,text='确定',cursor='hand2',command=self.mysqlhomecreate).place(x=30,y=160)
-        Button(cteateh, text='取消',cursor='hand2',command=cteateh.destroy).place(x=120, y=160)
+        Label(cteateh,textvariable=self.createvar, relief=FLAT,
+              bd=0,bg='#DACBD2',font=('Arica','24',),fg='red').place(x=400,y=440)
+        img1 = PhotoImage(file='image/homezhucequeding.png')
+        img2 = PhotoImage(file='image/homezhucequxiao.png')
+        Button(cteateh,
+               width=135,
+               height=80,
+               image=img1,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',
+               command=self.mysqlhomecreate).place(x=200,y=685)
+        Button(cteateh,
+               width=135,
+               height=80,
+               image=img2,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',
+               command=cteateh.destroy).place(x=380, y=685)
+        cteateh.mainloop()
 
     #主窗口
     def main(self):

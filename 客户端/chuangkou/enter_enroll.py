@@ -114,7 +114,7 @@ class Dengluzhuce:
         self.root.iconbitmap('image/tb.ico')
 
         bm = PhotoImage(file="image/denglu.png")
-        t2 =label = Label(self.root, image=bm)
+        t2 = Label(self.root, image=bm)
         t2.place(x=0,y=0)
         # t1 = Label(self.root, text='账号')
         # t1.place(x=60,y=235)

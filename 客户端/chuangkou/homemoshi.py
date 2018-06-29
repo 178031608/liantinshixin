@@ -465,18 +465,59 @@ class HomeChat:
     #创建房间相关
     def createhome(self):
         self.cteateh = Toplevel()
-        self.cteateh.geometry('400x300')
-        Label(self.cteateh,image=self.creHomeimg).place(x=0,y=0)
-        Label(self.cteateh, text=' 房间名',bg='#FFFFFF').place(x=100, y=100)
-        Label(self.cteateh, text='房间密码',bg='#FFFFFF').place(x=100, y=130)
-        self.homename = Entry(self.cteateh)
-        self.homename.place(x=170, y=100)
-        self.homepassword = Entry(self.cteateh)
-        self.homepassword.place(x=170, y=130)
+        self.cteateh.geometry('1004x819')
+        homezhuce = PhotoImage(file='image/homezhuce.png')
+        t2 = Label(self.cteateh, image=homezhuce)
+        t2.place(x=0, y=0)
+        # Label(cteateh,text=' 房间名').place(x=5,y=5)
+        # Label(cteateh,text='房间密码').place(x=5,y=30)
+        self.homename = Entry(self.cteateh,
+                              bd=0,
+                              font=('Adobe 黑体 Std', '36'),
+                              bg='#DACBD2',
+                              fg='red',
+                              width=15, justify=CENTER,
+                              relief=FLAT,
+                              insertbackground='green',
+                              # highlightthickness=4,
+                              highlightcolor='pink',
+                              )
+        self.homename.place(x=400, y=245)
+        self.homepassword = Entry(self.cteateh,
+                                  bd=0,
+                                  font=('Adobe 黑体 Std', '36'),
+                                  bg='#DACBD2',
+                                  fg='red',
+                                  width=15, justify=CENTER,
+                                  relief=FLAT,
+                                  insertbackground='green',
+                                  # highlightthickness=4,
+                                  highlightcolor='pink',
+                                  )
+        self.homepassword.place(x=400, y=365)
         self.createvar = StringVar()
-        Label(self.cteateh, textvariable=self.createvar, font='Arica', fg='red',bg='#FFFFFF').place(x=120, y=155)
-        Button(self.cteateh, text='确定',cursor='hand2', command=self.homecreate).place(x=100, y=260)
-        Button(self.cteateh, text='取消',cursor='hand2', command=self.cteateh.destroy).place(x=200, y=260)
+        Label(self.cteateh, textvariable=self.createvar, relief=FLAT,
+              bd=0, bg='#DACBD2', font=('Arica', '24',), fg='red').place(x=400, y=440)
+        img1 = PhotoImage(file='image/homezhucequeding.png')
+        img2 = PhotoImage(file='image/homezhucequxiao.png')
+        Button(self.cteateh,
+               width=135,
+               height=80,
+               image=img1,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',
+               command=self.homecreate).place(x=200, y=685)
+        Button(self.cteateh,
+               width=135,
+               height=80,
+               image=img2,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',
+               command=self.cteateh.destroy).place(x=380, y=685)
+        self.cteateh.mainloop()
+
 
     #主模块开启循环
     def root_main(self):
