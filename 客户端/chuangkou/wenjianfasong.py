@@ -92,25 +92,40 @@ class Wenjian:
 
     def main(self):
         #界面搭建
-        self.win = Toplevel()
-        self.win.geometry('370x210')
+        self.win = Toplevel(bg='#CCCCCC')
+        self.win.geometry('370x250')
         self.win.title('发送给 %s 的文件'%self.othername)
+        l1 = Label(self.win,bg='#313131',bd=0,relief=FLAT,width=100,height=2)
+        l1.place(x=0,y=0)
         self.canvas = Canvas(self.win, width=200, height=26, bg='white')
         self.out_line = self.canvas.create_rectangle(2, 2, 200, 27, width=1, outline='black')
-        self.canvas.place(x=10, y=5)
-        self.text1 = Text(self.win,relief=FLAT,width=16, height=1)
-        self.text1.place(x=230,y=10)
-        Label(self.win,text='你选择的文件是:').place(x=10,y=35)
+        self.canvas.place(x=10, y=45)
+        self.text1 = Text(self.win,
+                          fg='green',bg='#F2F2F2',
+                          font =('Asira','10','bold'),
+                          relief=FLAT,width=16, height=1)
+        self.text1.place(x=230,y=50)
+        l2 = Label(self.win,text='你选择的文件是:',
+              font=('Asria','14','bold'),bg='#CCCCCC',fg='black',
+              )
+
+        l2.place(x=10,y=75)
         self.xuanzefilename=StringVar()
-        self.text=Text(self.win,relief=FLAT,width=50,height=8)
-        self.text.place(x=10,y=55)
+        self.text=Text(self.win,
+                       bg='#F2F2F2',
+                       relief=FLAT,width=52,height=8)
+        self.text.place(x=0,y=100)
         self.text.config(state=DISABLED)
-        Button(self.win,text='选择文件',cursor='hand2',command=self.xuanzefile).place(x=100,y=170)
+        Button(self.win,text='选择文件',
+               font=('Asria', '14', 'bold'),
+               bg='#F2F2F2',
+               cursor='hand2',
+               command=self.xuanzefile).place(x=100,y=215)
         self.var = StringVar()
         self.var.set('开始')
         # self.button = Button(self.win, textvariable=self.var, command=self.progressbar_thread, width=5)
         # self.button.place(x=220,y=80)
-        # self.win.mainloop()
+        self.win.mainloop()
 
 
 

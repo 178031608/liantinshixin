@@ -68,24 +68,42 @@ class Wenjianjieshou:
 
 
     def main(self):
-        self.win=Toplevel()
-        self.win.geometry('370x210')
+        self.win=Toplevel(bg='#CCCCCC')
+        self.win.geometry('370x250')
         self.win.title('从 %s 处接受文件'%self.othername)
+        l1 = Label(self.win, bg='#313131', bd=0, relief=FLAT, width=100, height=2)
+        l1.place(x=0, y=0)
         self.canvas = Canvas(self.win, width=200, height=26, bg='white')
         self.out_line = self.canvas.create_rectangle(2, 2, 200, 27, width=1, outline='black')
-        self.canvas.place(x=10, y=5)
-        self.text1 = Text(self.win, relief=FLAT,width=16, height=1)
-        self.text1.place(x=230, y=10)
+        self.canvas.place(x=10, y=45)
+        self.text1 = Text(self.win,
+                          bg='#F2F2F2',
+                          fg='green',
+                          font=('Asira', '10', 'bold'),
+                          relief=FLAT, width=16, height=1)
+        self.text1.place(x=230, y=50)
         #一个按钮用来设置保存文件路径选择和一个text控件显示保存文文件路径名字显示
-        Label(self.win,text='文件保存路径为').place(x=10,y=35)
-        self.showfilelujing = Text(self.win,relief=FLAT,width=50,height=8)
-        self.showfilelujing.place(x=10,y=55)
+        l2 = Label(self.win,text='文件保存路径为',
+                   bg='#CCCCCC',fg='black',
+                   font=('Asria','14','bold'))
+        l2.place(x=10,y=75)
+        self.showfilelujing = Text(self.win,
+                                   bg='#F2F2F2',
+                                   relief=FLAT,width=52,height=8)
+        self.showfilelujing.place(x=0,y=100)
         self.showfilelujing.config(state=DISABLED)
-        Button(self.win,text='接收文件-选择保存文件路径',cursor='hand2',command=self.savefilelujing).place(x=30,y=170)
+        Button(self.win,text='接收文件-选择保存文件路径',
+               font=('Asria', '11', 'bold'),
+               bg='#F2F2F2',
+               cursor='hand2',command=self.savefilelujing).place(x=30,y=215)
         # self.button = Button(self.win,text='接收文件', command=self.jieshou)
         # self.button.place(x=170,y=85)
-        Button(self.win, text='拒绝接收',cursor='hand2', command=self.jujuejieshoufile).place(x=250, y=170)
-        # mainloop()
+        Button(self.win, text='拒绝接收',
+               font=('Asria', '11', 'bold'),
+               bg='#F2F2F2',
+               cursor='hand2',
+               command=self.jujuejieshoufile).place(x=260, y=215)
+        mainloop()
 
 if __name__ == '__main__':
     a = Wenjianjieshou(2,3,6,1)
