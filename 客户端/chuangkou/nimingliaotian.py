@@ -173,20 +173,39 @@ class Nimingliaotian:
     def main(self):
         self.root = Tk()
         self.root.title('欢迎来到匿名聊天模式！')
-        self.root.geometry('700x510')
+        self.root.geometry('1004x799')
         chushihua = PhotoImage(file='image/weather/chushihua.png')
-        #菜单相关
-        menubar = Menu(self.root)
-        menubar.add_command(label='重新选择聊天方式',command=self.userquit)
-        # 菜单实例应用到大窗口中
-        self.root['menu'] = menubar
+        nimingjiemian = PhotoImage(file='image/nimingliaotian.png')
+        Label(self.root, image=nimingjiemian).place(x=0, y=0)
+        #重新选择房间按钮
+        img1 = PhotoImage(file='image/fangjianxuaze.png')
+        Button(self.root,
+               width=150,
+               height=30,
+               image=img1,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',
+               command=self.userquit).place(x=50, y=12)
+
+        # #菜单相关
+        # menubar = Menu(self.root)
+        # menubar.add_command(label='重新选择聊天方式',command=self.userquit)
+        # # 菜单实例应用到大窗口中
+        # self.root['menu'] = menubar
 
 
         #聊天消息相关框架和组件
-        xianshi = LabelFrame(self.root,text='聊天信息')
-        xianshi.place(x=5,y=5)
-        huakuai=Scrollbar(xianshi)
-        self.showinfo = Text(xianshi,width=60,height=20,relief=FLAT,yscrollcommand=huakuai.set)
+        xianshi = Frame(self.root)
+        xianshi.place(x=0,y=128)
+        huakuai=Scrollbar(xianshi
+                          , relief=FLAT, width=5
+                          )
+        self.showinfo = Text(xianshi,
+                             bg='#f2f2f2',
+                             # bg='red',
+                             width=84, height=26, relief=FLAT,
+                             yscrollcommand=huakuai.set)
         huakuai.pack(side=RIGHT,fill=Y)
         self.showinfo.pack(side=LEFT,fill=BOTH)
         huakuai.config(command=self.showinfo.yview)
@@ -194,10 +213,16 @@ class Nimingliaotian:
         self.showinfo.config(state=DISABLED)
 
         #机器人相关组件和滑块以及TEXT
-        jiqi = LabelFrame(self.root,text='机器人消息')
-        jiqi.place(x=5,y=290)
-        huakuai1 = Scrollbar(jiqi)
-        self.aiinfo = Text(jiqi,width=60,height=9,relief=FLAT,yscrollcommand=huakuai1.set)
+        jiqi = Frame(self.root)
+        jiqi.place(x=0,y=499)
+        huakuai1 = Scrollbar(jiqi
+                             , relief=FLAT, width=5
+                             )
+        self.aiinfo = Text(jiqi,
+                           bg='#f2f2f2',
+                           # bg='red',
+                           width=84, height=12, relief=FLAT,
+                           yscrollcommand=huakuai1.set)
         huakuai1.pack(side=RIGHT,fill=Y)
         self.aiinfo.pack(side=LEFT,fill=BOTH)
         huakuai1.config(command=self.aiinfo.yview)
@@ -205,40 +230,85 @@ class Nimingliaotian:
         self.aiinfo.config(state=DISABLED)
 
         #输入框相关
-        inpu = LabelFrame(self.root,text='输入框')
-        inpu.place(x=5,y=430)
-        huakuai2 = Scrollbar(inpu)
-        self.inpu = Text(inpu,width=60,height=2 ,relief=FLAT,yscrollcommand=huakuai2.set)
+        inpu = Frame(self.root)
+        inpu.place(x=0,y=695)
+        huakuai2 = Scrollbar(inpu
+                             , relief=FLAT, width=5
+                             )
+        self.inpu = Text(inpu,
+                         bg='#f2f2f2',
+                         # bg='red',
+                         width=84, height=8, relief=FLAT,
+                         yscrollcommand=huakuai2.set)
         huakuai2.pack(side=RIGHT,fill=Y)
         self.inpu.pack(side=LEFT,fill=BOTH)
         huakuai2.config(command=self.inpu.yview)
         #天气显示框
-        weate= LabelFrame(self.root,text='天气信息')
-        weate.place(x=455,y=5)
+        weate= Frame(self.root)
+        weate.place(x=651,y=127)
         self.weathertext = StringVar()
         tkFont = tkfont.Font(family='Arial', size=14, weight=tkfont.BOLD)
-        self.weather = Label(weate, fg='yellow', font=tkFont, textvariable=self.weathertext, compound='center')
+        self.weather = Label(weate,
+                             fg='yellow',bd=0, font=tkFont, textvariable=self.weathertext, compound='center')
         self.weather.pack()
         self.weathertext.set('获取天气中请稍等')
         self.weather.config(image=chushihua)
 
         #天气输入模板
-        w1 = LabelFrame(self.root, text='请输入天气', width=219, height=60)
-        w1.place(x=460, y=290)
-        self.weatherEntry = Entry(w1)
-        b4 = Button(w1, text='天气发送', cursor='hand2', command=self.weatherupdate)
-        b4.place(x=148, y=0)
-        self.weatherEntry.place(x=5, y=0)
+        w1 = Frame(self.root,height=40,width=310,bg='#ccc')
+        w1.place(x=651, y=492)
+        self.weatherEntry = Entry(w1,
+                                  bd=0,
+                                  font=('Adobe 黑体 Std', '19'),
+                                  bg='#f2f2f2',
+                                  # bg='yellow',
+                                  fg='red',
+                                  width=13, justify=CENTER,
+                                  relief=FLAT,
+                                  insertbackground='green',
+                                  # highlightthickness=4,
+                                  highlightcolor='pink',
+                                  )
+        img3 = PhotoImage(file='image/nimingweater.png')
+        b4 = Button(w1, text='天气发送',
+                    width=99,
+                    height=40,
+                    image=img3,
+                    bd=0,
+                    relief=FLAT,
+                    cursor='hand2',
+                    command=self.weatherupdate)
+        b4.place(x=197, y=0)
+        self.weatherEntry.place(x=5, y=5)
 
         #一个带图片的Labe显示在线人数
         self.var1 = StringVar()
         # print('图框里的',self.var1)
         im = PhotoImage(file='image/niming.png')
-        self.renshu= Label(self.root,textvariable=self.var1,font='Arial',image=im,compound='center')
-        self.renshu.place(x=460,y=355)
-
-        Button(self.root,text='发送',cursor='hand2',command=self.sendtoliaotian).place(x=490,y=465)
-        Button(self.root, text='发送给机器人',cursor='hand2', command=self.sendtoai).place(x=580,y=465)
+        self.renshu= Label(self.root,textvariable=self.var1,
+                           font='Arial',image=im,compound='center')
+        self.renshu.place(x=651,y=564)
+        #按钮
+        img4 = PhotoImage(file='image/fasong.png')
+        img5 = PhotoImage(file='image/nimingai.png')
+        Button(self.root,
+               width=57,
+               height=33,
+               image=img4,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',
+               command=self.sendtoliaotian)\
+            .place(x=687,y=728)
+        Button(self.root,
+               width=140,
+               height=35,
+               image=img5,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',
+               command=self.sendtoai)\
+            .place(x=809,y=727)
 
         #发送个服务器进入匿名聊天模式将用户加入到匿名聊天模式
         s = '*匿名聊天模式:'+self.username

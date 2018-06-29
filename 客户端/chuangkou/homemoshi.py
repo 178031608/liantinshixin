@@ -601,7 +601,8 @@ class HomeChat:
         self.infotext = Text(center1,
                              bg='#f2f2f2',
                              # bg='red',
-                             width=65,height=31,relief=FLAT,yscrollcommand = infoscr.set)
+                             width=65,height=31,relief=FLAT,
+                             yscrollcommand = infoscr.set)
         infoscr.grid(row=0,column=1,sticky='ns')
         self.infotext.grid(row=0,column=0)
         infoscr.config(command=self.infotext.yview)

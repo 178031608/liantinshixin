@@ -242,16 +242,27 @@ class Pribymoshi:
     #主界面搭建
     def main(self):
         self.root = Toplevel()
-        self.root.geometry('530x520')
+        self.root.geometry('1004x1024')
         self.root.title('与 '+self.othername+' 的私聊！')
         self.im = PhotoImage(file='image/userinfo.png')
         self.chushi = PhotoImage(file='image/weather/chushihua.png')
-
+        beijing = PhotoImage(file='image/siliao.png')
+        Label(self.root, image=beijing).place(x=0, y=0)
+        #发送文件按钮
+        img1 = PhotoImage(file='image/fasongwenjain.png')
+        Button(self.root,
+               width=130,
+               height=80,
+               image=img1,
+               bd=0,
+               relief=FLAT,
+               cursor='hand2',
+               command=self.sendtofileThread).place(x=5, y=5)
         #菜单相关函数
-        menubar = Menu(self.root)
-        menubar.add_command(label='发送文件', command=self.sendtofileThread)
-        # 菜单实例应用到大窗口中
-        self.root['menu'] = menubar
+        # menubar = Menu(self.root)
+        # menubar.add_command(label='发送文件', command=self.sendtofileThread)
+        # # 菜单实例应用到大窗口中
+        # self.root['menu'] = menubar
 
         #title待定模式暂定为谁和谁的私聊模式
         showinfos = LabelFrame(self.root,text='聊天信息')
