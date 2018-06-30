@@ -252,13 +252,24 @@ class HomeChat:
         self.hpwd.geometry('350x300')
         self.hpwd.title('有密码的房间')
         self.hpwd.iconbitmap('image/tubiao.ico')
-        phon = Label(self.hpwd,image=self.yanzheng)
+        phon = Label(self.hpwd,width=100,height=100,bg='#CCCCCC')
         phon.place(x=0,y=0)
-        Label(self.hpwd,text='你想要进入有密码的房间请输入密码',font='Arita',fg='red').place(x=65,y=85)
-        self.getpwd=Entry(self.hpwd)
-        self.getpwd.place(x=100,y=120)
-        Button(self.hpwd,text='确定',cursor='hand2',command=self.yanzheng11).place(x=200,y=240)
-        Button(self.hpwd,text='退出',cursor='hand2',command=self.hpwd.destroy).place(x=250,y=240)
+        Label(self.hpwd,
+              text='你想要进入有密码的房间\n    请输入密码',
+              font=('Adobe','20'),bg='#CCCCCC').place(x=25,y=85)
+        self.getpwd=Entry(self.hpwd,
+                        font = ('Adobe', '20'), bg = '#CCCCCC',
+                        insertbackground='#F2F2F2',
+                        highlightthickness=3, highlightcolor='#718376',
+                        highlightbackground='#CCCCCC', justify=CENTER,
+                          )
+        self.getpwd.place(x=25,y=155)
+        Button(self.hpwd,text='确定',
+               font=('Adobe', '20'),bg = '#CCCCCC',bd=0,
+               cursor='hand2',command=self.yanzheng11).place(x=50,y=240)
+        Button(self.hpwd,text='退出',
+               font=('Adobe', '20'),bg = '#CCCCCC',bd=0,
+               cursor='hand2',command=self.hpwd.destroy).place(x=200,y=240)
 
 
     #获取用户选择的房间并且获取房间用户信息并删除以前的聊天信息
