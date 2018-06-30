@@ -142,8 +142,11 @@ class ServerTkinter:
 
     #双击踢出用户功能
     def outhomeuser(self,event):
-        tichuyonghu = self.userlisall.get(self.userlisall.curselection())
-        self.tirengongneng(tichuyonghu)
+        try:
+            tichuyonghu = self.userlisall.get(self.userlisall.curselection())
+            self.tirengongneng(tichuyonghu)
+        except:
+            pass
 
     #一键踢出所有用户调用的函数
     def allusertichu(self):
@@ -344,14 +347,14 @@ class ServerTkinter:
        #输入框
         Button(root,text='发送机器人',
                # background='red',
-               width=125,height=45,
+               # width=125,height=45,
                cursor='hand2',
-               default=NORMAL,
+               # default=NORMAL,
                # font='12',
                # image=jiqiren,
-               bd=0,
+               # bd=0,
                # relief=SUNKEN,
-               command=self.robotsendinfo).place(x=508,y=435)
+               command=self.robotsendinfo).place(x=508,y=445)
 
         #消息发送按钮
         Button(root, text='发送',cursor='hand2', command=self.chatsendinfo).place(x=470, y=470)

@@ -234,14 +234,14 @@ class Dengluzhuce:
             not_data = []
             #判断身份证号是否正确
             pidcard = identitycard.get().strip()
-            a = ['1','2','3','4','5','6','7','8','9','0','x']
+            a = ['1','2','3','4','5','6','7','8','9','0','X']
             i = 0
             for x in pidcard:
                 if x in a:
                     i +=1
             if i != 18:
                 print(i)
-                not_data.append('身份证号不正确,长度是18位')
+                not_data.append('身份证号不正确,长度是18位,或者不是1-9和X')
             #判断手机号是否正确
             pnumber = phonnumber.get().strip()
             if len(pnumber) != 11:
@@ -293,11 +293,11 @@ class Dengluzhuce:
                 data,addr = self.conn.recvfrom(4096)
                 #用弹窗显示服务器返回值
                 if data.decode()[0] != 'Y':
-                    message.showerror(title='注册用户出错了',message=data)
+                    message.showerror(title='注册用户出错了',message=data.decode())
                 else:
                     print(data.decode())
                     message.showerror(title='注册用户成功了', message=data[2:].decode())
-
+                    self.login.destroy()
                 # ********************************************
 
 

@@ -54,7 +54,7 @@ class Userinfo:
             self.db.commit()
         except Exception as a:
             print('错误是',a)
-            return "昵称或者身份证重复了重复了:"
+            return "昵称或者身份证重复了重复了!"
         #生成的最后一个ＩＤ
         zhanghanfanhui = '''select id from alluserinfos where IDnumber='%s';'''%IDnumber
         t = cursr.execute(zhanghanfanhui)

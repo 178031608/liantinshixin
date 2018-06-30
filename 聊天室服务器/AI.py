@@ -56,7 +56,7 @@ class ServerAI:
                 # 没问题直接返回该数据发送到目的地
                 return message,username
         return '*#消息中含有了不文明用语',username
-        pass
+
 
 
 
@@ -78,6 +78,7 @@ class ServerAI:
             #向数据库中插入刷据
             # (message,jd['text'])
             return jd['text']
+
 if __name__ == '__main__':
     s = ServerAI()
 

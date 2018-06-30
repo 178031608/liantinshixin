@@ -14,37 +14,39 @@ class Wenjian:
 
     #更新进度条
     def progressbar_thread(self):
-        #搭建带界面的进度条
-        # self.button.config(state='disable')
-        fill_line = self.canvas.create_rectangle(2, 2, 0, 27, width=0, fill='#64a131')
-        with open(self.filename, 'rb') as rf:
-            t = 0
-            while True:
-                fileneirong = rf.read(4096)
-                t += len(fileneirong)
-                self.conn.send(fileneirong)
-                value = t / self.size * 100
-                self.canvas.coords(fill_line, (0, 0, 2 * value, 30))
-                s = '\n已上传了:' + str('%.2f' % (t / self.size * 100)) + '%'
-                self.text1.insert('end', s)
-                self.text1.see('end')
-                self.win.update()
-                # time.sleep(0.1)
-                if t == self.size:
-                    time.sleep(1)
-                    s='发送完毕了5秒后提出程序'
-                    self.text.config(state=NORMAL)
-                    self.text.delete('0.0', 'end')
-                    self.text.insert('end', s)
-                    self.text.see('end')
-                    self.text.config(state=DISABLED)
+        try:
+            #搭建带界面的进度条
+            # self.button.config(state='disable')
+            fill_line = self.canvas.create_rectangle(2, 2, 0, 27, width=0, fill='#64a131')
+            with open(self.filename, 'rb') as rf:
+                t = 0
+                while True:
+                    fileneirong = rf.read(4096)
+                    t += len(fileneirong)
+                    self.conn.send(fileneirong)
+                    value = t / self.size * 100
+                    self.canvas.coords(fill_line, (0, 0, 2 * value, 30))
+                    s = '\n已上传了:' + str('%.2f' % (t / self.size * 100)) + '%'
+                    self.text1.insert('end', s)
+                    self.text1.see('end')
                     self.win.update()
-                    time.sleep(5)
-                    self.win.destroy()
-                    self.conn.close()
-                    break
-                # print(fileneirong)
-
+                    # time.sleep(0.1)
+                    if t == self.size:
+                        time.sleep(1)
+                        s='发送完毕了5秒后提出程序'
+                        self.text.config(state=NORMAL)
+                        self.text.delete('0.0', 'end')
+                        self.text.insert('end', s)
+                        self.text.see('end')
+                        self.text.config(state=DISABLED)
+                        self.win.update()
+                        time.sleep(5)
+                        self.win.destroy()
+                        self.conn.close()
+                        break
+                    # print(fileneirong)
+        except :
+            pass
 
 
     def main1(self):

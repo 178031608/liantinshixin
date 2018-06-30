@@ -11,7 +11,7 @@ import tkinter.font as tkfont
 # from PIL import Image,ImageTk
 
 
-HOST = '192.168.1.132'
+HOST = '172.211.80.56'
 # try:
 #     with open('host.txt') as f:
 #         HOST = f.readline()
@@ -19,7 +19,7 @@ HOST = '192.168.1.132'
 #     print('获取HOST错误内容是，',e)
 
 PORT = 8888
-addr = ('192.168.1.133',PORT)
+addr = (HOST,PORT)
 conn = ''
 
 #主模块

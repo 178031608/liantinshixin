@@ -187,8 +187,11 @@ class Homeinfo:
         self.db.commit()
         add = cur.fetchall()
         print('数据库的addr',add)
-        addr = add[0]
-        return addr
+        try:
+            addr = add[0]
+            return addr
+        except :
+            pass
 
     #用于删除房间的功能
     def removehome(self,homename):

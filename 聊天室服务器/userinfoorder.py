@@ -69,10 +69,11 @@ class Recvinfo:
         userinfo = s[:-1]
         # print(userinfo)
         #返回注册函数返回的结果加密码
-        jieguo = str(self.usermysql.add_user_info(userinfo,IDnumber))+':'+data[0]
-        jieguo = jieguo.split(':')
+        jiegu = str(self.usermysql.add_user_info(userinfo,IDnumber))+':'+data[0]
+        jieguo = jiegu.split(':')
+        print('&&&&&&&&&&',jieguo)
         # 如果输入有误
-        if jieguo[0] == '昵称或者身份证重复了重复了:':
+        if jieguo[0] == '昵称或者身份证重复了重复了!':
             s = jieguo[0] + '#' + addr[0] + '#' + str(addr[1])
             # sockfd.sendto(jieguo[0].encode(),addr)
         else:
@@ -190,19 +191,23 @@ class Recvinfo:
 
     #如果是建立私聊模式的消息addr是发送者的addr
     def createpribymoshi(self,data,addr):
-        t = data.split(':')
-        # print('t',t)
-        #要建立连接的对象的名字
-        othername = t[0]
-        #发起者的名字
-        myname = t[1]
-        #获取ohernamde的addr还有
-        otheradd = self.homemysql.siliaomishi_get_othername_addr(othername)
-        otheraddr = otheradd[0].split('&')
-        print('otheraddr',otheraddr)
-        msg = '*与:'+myname+':建立私聊'+'#'+otheraddr[0]+'#'+str(otheraddr[1])
-        print('建立私聊的用户的返回消息:',msg)
-        return msg
+        try:
+            t = data.split(':')
+            # print('t',t)
+            #要建立连接的对象的名字
+            othername = t[0]
+            #发起者的名字
+            myname = t[1]
+            #获取ohernamde的addr还有
+            otheradd = self.homemysql.siliaomishi_get_othername_addr(othername)
+            otheraddr = otheradd[0].split('&')
+            print('otheraddr',otheraddr)
+            msg = '*与:'+myname+':建立私聊'+'#'+otheraddr[0]+'#'+str(otheraddr[1])
+            print('建立私聊的用户的返回消息:',msg)
+            return msg
+        except:
+            pass
+
     #私聊消息的haul
     def siliaomsg(self,data):
         #data=测试3:测试1:FASFASD
