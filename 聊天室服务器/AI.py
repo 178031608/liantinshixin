@@ -47,15 +47,13 @@ class ServerAI:
             username = un[0]
         elif len(un) == 4:
             username = un[2]
-        lst = ['草',]
-        i = 0
+        lst = ['草','垃圾']
+
         for x in lst:
             if x in message:
-                break
-            else:
-                # 没问题直接返回该数据发送到目的地
-                return message,username
-        return '*#消息中含有了不文明用语',username
+                message = message.replace(x,'**')
+
+        return message,username
 
 
 

@@ -246,8 +246,6 @@ class HomeChat:
 
     #房间密码验证
     def homepwdyanzheng(self):
-        # def destory1():
-        #     self.hpwd.destroy()
         self.hpwd=Toplevel()
         self.hpwd.geometry('350x300')
         self.hpwd.title('有密码的房间')
@@ -255,21 +253,21 @@ class HomeChat:
         phon = Label(self.hpwd,width=100,height=100,bg='#CCCCCC')
         phon.place(x=0,y=0)
         Label(self.hpwd,
-              text='你想要进入有密码的房间\n    请输入密码',
-              font=('Adobe','20'),bg='#CCCCCC').place(x=25,y=85)
+              text='你想要进入有密码的房间\n请输入密码',
+              font=('Adobe','20'),bg='#CCCCCC').place(x=20,y=55)
         self.getpwd=Entry(self.hpwd,
                         font = ('Adobe', '20'), bg = '#CCCCCC',
                         insertbackground='#F2F2F2',
                         highlightthickness=3, highlightcolor='#718376',
                         highlightbackground='#CCCCCC', justify=CENTER,
                           )
-        self.getpwd.place(x=25,y=155)
+        self.getpwd.place(x=30,y=125)
         Button(self.hpwd,text='确定',
                font=('Adobe', '20'),bg = '#CCCCCC',bd=0,
                cursor='hand2',command=self.yanzheng11).place(x=50,y=240)
         Button(self.hpwd,text='退出',
                font=('Adobe', '20'),bg = '#CCCCCC',bd=0,
-               cursor='hand2',command=self.hpwd.destroy).place(x=200,y=240)
+               cursor='hand2',command=self.hpwd.destroy).place(x=210,y=240)
 
 
     #获取用户选择的房间并且获取房间用户信息并删除以前的聊天信息
@@ -330,7 +328,7 @@ class HomeChat:
     def input_info(self,center3):
         self.inputinfo = Text(center3,
                               bg='#f2f2f2',
-                              width = 65,
+                              width = 64,
                               relief=FLAT,height=5)
         self.inputinfo.pack()
 
@@ -651,7 +649,7 @@ class HomeChat:
         self.infotext = Text(center1,
                              bg='#f2f2f2',
                              # bg='red',
-                             width=65,height=31,relief=FLAT,
+                             width=64,height=31,relief=FLAT,
                              yscrollcommand = infoscr.set)
         infoscr.grid(row=0,column=1,sticky='ns')
         self.infotext.grid(row=0,column=0)
@@ -664,7 +662,7 @@ class HomeChat:
         center2.place(x=216,y=534)
 
         aisc = Scrollbar(center2,relief=FLAT,width=5)
-        self.recvinfofromai = Text(center2,bg='#f2f2f2',width=65,height=6,relief=FLAT,yscrollcommand=aisc.set)
+        self.recvinfofromai = Text(center2,bg='#f2f2f2',width=64,height=6,relief=FLAT,yscrollcommand=aisc.set)
         aisc.grid(row=0, column=1, sticky='ns')
         self.recvinfofromai.grid(row=0, column=0)
         aisc.config(command=self.recvinfofromai.yview)

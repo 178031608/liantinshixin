@@ -241,7 +241,7 @@ class Dengluzhuce:
                     i +=1
             if i != 18:
                 print(i)
-                not_data.append('身份证号不正确,长度是18位,或者不是1-9和X')
+                not_data.append('身份证号不正确,长度是18位,或者不是1~9 和 X')
             #判断手机号是否正确
             pnumber = phonnumber.get().strip()
             if len(pnumber) != 11:
@@ -282,7 +282,7 @@ class Dengluzhuce:
                 for not_info in not_data:
                     info+=not_info+'\n'
                 message.showerror(title='注册信息输入错误',message=info)
-            else:   
+            else:
                 #生成正确信息
                 self.zhanghaomima = '*注册信息:'+newuserpasswd.get()+':'+petname.get()+':'+ \
                                   name.get()+':'+identitycard.get().strip()+':'+age.get()+ \
@@ -297,9 +297,12 @@ class Dengluzhuce:
                 else:
                     print(data.decode())
                     message.showerror(title='注册用户成功了', message=data[2:].decode())
-                    self.login.destroy()
+                    quitzhuce()
                 # ********************************************
-
+        #界面退出按钮
+        def quitzhuce():
+            self.login.destroy()
+            self.root.deiconify()
 
         #控制输入存数字，给数字不显示
         def test(content):
@@ -402,14 +405,11 @@ class Dengluzhuce:
                    width=165, height=40,
                    image=zhucequxiao, bd=0,
                    relief=FLAT,
-                   cursor='hand2',command = self.quitzhuce).place(x=790,y=428)
+                   cursor='hand2',command =quitzhuce).place(x=790,y=428)
 
         self.login.mainloop()
 
-    #注册按钮所用的退出
-    def quitzhuce(self):
-        self.login.destroy()
-        self.root.deiconify()
+
 
 
 if __name__ =='__main__':
