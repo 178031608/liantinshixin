@@ -358,6 +358,12 @@ class ServerTkinter:
 
         #消息发送按钮
         Button(root, text='发送',cursor='hand2', command=self.chatsendinfo).place(x=470, y=470)
+        # img2 = PhotoImage(file='image/userinfo.png')
+        # l12 = Label(root,image=img2)
+        # l12.place(x=490,y=490)
+        # img1 = PhotoImage(file='image/ceshi.png')
+        # l11 = Label(root,image=img1,text='ssssss',compound=BOTTOM)
+        # l11.place(x=500,y=500)
 
         root.mainloop()
 

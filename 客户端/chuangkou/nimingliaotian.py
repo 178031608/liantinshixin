@@ -100,14 +100,15 @@ class Nimingliaotian:
                     self.weather.config(image=openimage)
                     continue
                 else:
-                    # print('s',cityweather)
                     for x in cityweather:
+                        print(x)
+                        print(cityweather)
                         for z in x:
                             if self.city != city:
                                 continue
                             time.sleep(5)
                             t = z.split(',')
-                            print('天气里的data准备切割', t)
+                            # print('天气里的data准备切割', t)
                             data = self.city + ':' + t[0] + '\n天气:' + t[2] + '\n温度:' + t[3] + '\n风向:' + \
                                    t[4] + '\n风力:' + t[5]
                             if t[2] == '晴':
