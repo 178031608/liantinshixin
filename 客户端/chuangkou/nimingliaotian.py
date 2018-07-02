@@ -137,7 +137,7 @@ class Nimingliaotian:
                                 self.weather.config(fg='yellow')
                             elif t[2] == '阴':
                                 img = 'image/weather/yintian.png'
-                                self.weather.config(fg='yellow')
+                                self.weather.config(fg='green')
                             elif t[2] == '小雨':
                                 img = 'image/weather/xiaoyu.png'
                                 self.weather.config(fg='#00FFFF')

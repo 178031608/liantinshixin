@@ -54,9 +54,12 @@ def recv_info(sockfd,recv1,Aiserver,screen):
         elif data[:8] == '*匿名聊天模式:':
                 recv1.nimingmoshijinru(data[8:],addr)
         elif data[:8] == '*获取房间列表:':
-            s = recv1.get_home_list(addr)
-            print('获取房间列表的s',s)
-            infoqueue.put(s)
+            try:
+                s = recv1.get_home_list(addr)
+                print('获取房间列表的s',s)
+                infoqueue.put(s)
+            except:
+                pass
             # print('返回到主模块的房间列表',data)
         elif data[:10] == '*获取房间用户信息:':
             s = recv1.get_home_user(addr,data[10:])
@@ -134,10 +137,11 @@ def send_info(sockfd,recv1):
         try:
             sockfd.sendto(data[0].encode(),(data[1],int(data[2])))
             print('发送的成功消息', data)
-        except Exception as e:
             s ='发送给用户的数据这里出问题了内容是:'+e
             servershowinfo.put(s)
             continue
+        except Exception as e:
+            pass
 
 #控制服务器界面的用户列表显示
 def Serverlistuser(recv1,screen):
