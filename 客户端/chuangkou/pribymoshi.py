@@ -184,7 +184,7 @@ class Pribymoshi:
         likestr.set(t[2])
         citystr.set(t[3])
         phonestr.set(t[4])
-        timestr.set(t[5])
+        timestr.set(t[5][:11])
 
         s = '年龄:    ' + t[0] + '\n' + '性别:    ' + t[1] + '\n' + '爱好:    ' + t[2] + '\n' + '城市:    ' + t[3] + '\n' \
             + '手机号码:  ' + t[4] + '\n' + '注册时间: ' + t[5]

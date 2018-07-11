@@ -11,7 +11,7 @@ import tkinter.font as tkfont
 # from PIL import Image,ImageTk
 
 
-HOST = '192.168.1.133'
+HOST = '172.211.80.145'
 # try:
 #     with open('host.txt') as f:
 #         HOST = f.readline()
